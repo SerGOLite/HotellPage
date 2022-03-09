@@ -1,0 +1,27 @@
+
+<div class="list-group" *ngFor="let booking of bookings">
+    <div class="mb-2 mb-2 list-group-item bg-dark text-white" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <a routerLink="/edit/{{booking.id}}" class="mb-1 h5 text-decoration-none">{{booking.name}}</a>
+        <button (click)="deleteBooking(booking)" type="button" class="btn btn-outline-danger">Löschen</button>
+      </div>
+      <p class="mb-1"> Reservierung: {{booking.startDate | date: 'dd/MM/yy'}} - {{booking.endDate | date: 'dd/MM/yy'}} </p>
+      <small>Zimmer Nr. {{booking.roomNumber}}</small>
+    </div>
+    <!-- <a href="#" class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">List group item heading</h5>
+        <small class="text-muted">3 days ago</small>
+      </div>
+      <p class="mb-1">Some placeholder content in a paragraph.</p>
+      <small class="text-muted">And some muted small print.</small>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">List group item heading</h5>
+        <small class="text-muted">3 days ago</small>
+      </div>
+      <p class="mb-1">Some placeholder content in a paragraph.</p>
+      <small class="text-muted">And some muted small print.</small>
+    </a> -->
+  </div>

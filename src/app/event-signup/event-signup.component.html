@@ -1,0 +1,57 @@
+<form #formSignup="ngForm">
+    <div class="card bg-dark text-white">
+
+        <div class="card-header">
+            <h5>Event Benachrichtigung</h5>
+        </div>
+
+        <div class="card-body">
+
+            <div class="row mb-2"> 
+                <span ></span>
+                <div class="col">
+                    <input
+                    type="email"
+                    #inputEmail="ngModel" 
+                    minlength="4" 
+                    id="email" 
+                    name="signupMail" [(ngModel)]="signupMail" 
+                    required 
+                    class="form-control" 
+                    placeholder="Bitte Ihre E-Mail Adresse eintragen">       
+                </div>   
+            </div>
+
+            <!-- TODO Stimmt was nicht. Es hat sich was geändert bei bootstrap -->
+            <div *ngIf="inputEmail.invalid && (inputEmail.touched || inputEmail.dirty)" class="row mb-2">
+                <div class="col">
+
+                    <div *ngIf="inputEmail.errors?.['required']" class="alert alert-danger">
+                        E-MAil Adresse ist erforderlich.
+                    </div>
+
+                    <div *ngIf="inputEmail.errors?.['minlength']" class="alert alert-danger">
+                        Die Länge soll mindestens 5 Zeichen lang sein.
+                    </div>
+
+                    <!-- Die Warnung kommt erst wenn das Mindestlänge von Zeichen erreicht wurde -->
+                    <div *ngIf="inputEmail.errors?.['email'] && !inputEmail.hasError('minlength')" class="alert alert-danger">
+                        Das ist keine gültige E-Mail Adresse.
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        
+            
+    
+    
+        <div class="card-footer">
+        <button [disabled]="formSignup.invalid" (click)="onSubmit()" class="btn btn-primary">Absenden</button>
+        </div>
+    </div>
+</form>
+
+
+
